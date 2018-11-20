@@ -36,7 +36,7 @@ git apply ../patches/patch_curl_fixes1172.diff
 export CC="$XCODE/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
 DESTDIR="$SCRIPTPATH/../prebuilt-with-ssl/iOS"
 
-export IPHONEOS_DEPLOYMENT_TARGET="9"
+export IPHONEOS_DEPLOYMENT_TARGET="8"
 ARCHS=(armv7 armv7s arm64 i386 x86_64)
 HOSTS=(armv7 armv7s arm i386 x86_64)
 PLATFORMS=(iPhoneOS iPhoneOS iPhoneOS iPhoneSimulator iPhoneSimulator)
@@ -50,6 +50,8 @@ for (( i=0; i<${#ARCHS[@]}; i++ )); do
 	if [ "${PLATFORMS[$i]}" = "iPhoneSimulator" ]; then
 		export CPPFLAGS="-D__IPHONE_OS_VERSION_MIN_REQUIRED=${IPHONEOS_DEPLOYMENT_TARGET%%.*}0000"
 	fi
+
+	export CFLAGS="$CFLAGS $PTR_RESPONSE_FILE_OPTION"
 	cd "$CURLPATH"
 	./configure	--host="${HOSTS[$i]}-apple-darwin" \
 			--with-darwinssl \

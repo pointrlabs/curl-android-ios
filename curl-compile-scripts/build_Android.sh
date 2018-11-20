@@ -60,8 +60,8 @@ $NDK_ROOT/build/tools/make-standalone-toolchain.sh --arch=arm --platform=$TARGET
 # Setup cross-compile environment
 export SYSROOT=$TOOLCHAIN/sysroot
 export ARCH=armv7
-export CC=$TOOLCHAIN/bin/arm-linux-androideabi-gcc
-export CXX=$TOOLCHAIN/bin/arm-linux-androideabi-g++
+export CC=$TOOLCHAIN/bin/arm-linux-androideabi-clang
+export CXX=$TOOLCHAIN/bin/arm-linux-androideabi-clang++
 export AR=$TOOLCHAIN/bin/arm-linux-androideabi-ar
 export AS=$TOOLCHAIN/bin/arm-linux-androideabi-as
 export LD=$TOOLCHAIN/bin/arm-linux-androideabi-ld
@@ -86,7 +86,7 @@ if [ ! -x "$CURLPATH/configure" ]; then
 	fi
 fi
 
-export CFLAGS="--sysroot=$SYSROOT -march=$ARCH -mandroid -mthumb"
+export CFLAGS="--sysroot=$SYSROOT -march=$ARCH -mthumb"
 export CPPFLAGS="$CFLAGS -I$TOOLCHAIN/include -DANDROID -DCURL_STATICLIB"
 export LIBS="-lssl -lcrypto"
 export LDFLAGS="-march=$ARCH -L$SCRIPTPATH/obj/local/armeabi-v7a"
