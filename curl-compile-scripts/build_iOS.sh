@@ -4,7 +4,7 @@ realpath() {
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
-XCODE="/Applications/Xcode.app/Contents/Developer"
+XCODE=$(xcode-select -p)
 if [ ! -d "$XCODE" ]; then
 	echo "You have to install Xcode and the command line tools first"
 	exit 1
