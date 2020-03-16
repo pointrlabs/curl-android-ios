@@ -35,7 +35,7 @@ git apply ../patches/patch_curl_fixes1172.diff
 
 DESTDIR="$SCRIPTPATH/../prebuilt-with-ssl/iOS"
 
-export IPHONEOS_DEPLOYMENT_TARGET="8"
+export IPHONEOS_DEPLOYMENT_TARGET="8.0"
 ARCHS=(armv7 armv7s arm64 i386 x86_64)
 HOSTS=(armv7 armv7s arm i386 x86_64)
 PLATFORMS=(iPhoneOS iPhoneOS iPhoneOS iPhoneSimulator iPhoneSimulator)
